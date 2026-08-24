@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "B站视频总结助手",
+  "version": "0.1.0",
+  "description": "自动读取 B 站视频标题、简介与字幕，并生成结构化总结。",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["https://www.bilibili.com/*", "https://bilibili.com/*", "https://*.bilivideo.com/*", "https://api.siliconflow.cn/*"],
+  "action": {"default_title": "总结这个 B 站视频", "default_popup": "popup.html"},
+  "options_page": "options.html",
+  "content_scripts": [{"matches": ["https://www.bilibili.com/video/*", "https://bilibili.com/video/*"], "js": ["content.js"], "run_at": "document_idle"}],
+  "background": {"service_worker": "background.js"}
+}
