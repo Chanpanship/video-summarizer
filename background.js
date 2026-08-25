@@ -1,5 +1,6 @@
 const configs={siliconflow:{chat:'https://api.siliconflow.cn/v1/chat/completions',asr:'https://api.siliconflow.cn/v1/audio/transcriptions',chatModel:'Qwen/Qwen3.5-4B',asrModel:'FunAudioLLM/SenseVoiceSmall'}};
 chrome.runtime.onInstalled.addListener(() => chrome.sidePanel.setPanelBehavior({openPanelOnActionClick: true}));
+chrome.action.onClicked.addListener(tab => { if (tab.id) chrome.sidePanel.open({tabId: tab.id}).catch(() => {}); });
 async function getConfig(){const s=await chrome.storage.sync.get(['provider','apiKey','model']);const provider=s.provider||'siliconflow';return {...configs[provider],provider,apiKey:s.apiKey||'',chatModel:s.model||configs[provider].chatModel};}
 chrome.runtime.onMessage.addListener((message,sender,sendResponse)=>{
   if(message.type==='FETCH_SUBTITLE'){const url=message.url.startsWith('//')?'https:'+message.url:message.url;fetch(url).then(r=>r.json()).then(d=>sendResponse({ok:true,text:(d.body||d.data?.body||[]).map(x=>{const sec=Number(x.from??x.start??x.start_time);const stamp=Number.isFinite(sec)?`[${String(Math.floor(sec/60)).padStart(2,'0')}:${String(Math.floor(sec%60)).padStart(2,'0')}] `:'';return stamp+(x.content||x.text||'');}).join(' ')})).catch(e=>sendResponse({ok:false,error:String(e)}));return true;}
