@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "通用视频总结助手 | Universal Video Summarizer",
+  "name": "Video Summarizer",
   "version": "0.1.0",
   "description": "总结 B 站视频、网课和其他网页视频，并支持追问。",
   "permissions": ["storage", "activeTab", "scripting", "sidePanel"],

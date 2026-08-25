@@ -1,4 +1,4 @@
-# 通用视频总结助手 | Universal Video Summarizer
+# Video Summarizer
 
 Chrome / Edge Manifest V3 browser extension for summarizing Bilibili videos, online courses, lectures, and other web videos.
 
