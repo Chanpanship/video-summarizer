@@ -27,10 +27,14 @@ Open the extension options and enter your own SiliconFlow API key. The default t
 
 API keys are stored in browser extension storage and are not included in the published package. Do not share your API key publicly.
 
-## Why SiliconFlow instead of Gemini?
+## Background and motivation
 
-Gemini is useful as a language model, but the Gemini browser experience cannot currently handle the complete workflow required here: extracting video streams from arbitrary video pages, downloading the audio, and transcribing the audio into timestamped text. This extension therefore uses SiliconFlow for speech recognition and summarization, so the video-to-text workflow can run inside the extension without requiring the user to manually prepare a transcript.
+There is still no reliable, general-purpose browser extension that can summarize videos from Bilibili, online courses, lectures, and other web pages in one workflow. Existing browser assistants, including Chrome's Gemini-related experience, may help with page text but often cannot extract video streams, download audio, and transcribe speech into usable text. As a result, video summarization frequently stops before it can actually begin.
 
-## 为什么使用 SiliconFlow 而不是 Gemini？
+Video Summarizer is built to close this gap: it collects available subtitles, downloads or captures audio when subtitles are unavailable, converts speech into timestamped text, and then generates a structured summary with follow-up Q&A.
 
-Gemini 适合进行文本理解和总结，但目前 Gemini 的浏览器使用方式无法完整完成本项目所需的视频流程，包括从不同网页提取视频流、下载音频，以及将音频转换为带时间戳的文字。因此本插件使用 SiliconFlow 完成语音识别和视频总结，让用户不需要先手动准备字幕文本。
+## 项目背景与动机
+
+目前还没有一个足够可靠、通用的视频总结浏览器插件，可以把 B 站视频、网课、讲座和其他网页视频放在同一个流程中处理。现有的浏览器助手，包括 Chrome 中与 Gemini 相关的使用方式，通常可以理解网页文字，但在视频流提取、音频下载和语音转文字方面仍有局限。因此很多情况下，视频总结还没有真正开始，就卡在了内容获取这一步。
+
+Video Summarizer 希望补上这一环：优先读取已有字幕；没有字幕时下载或捕获音频并转换为带时间戳的文字；最后生成结构化总结，并支持围绕视频内容继续追问。
