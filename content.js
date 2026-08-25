@@ -13,7 +13,7 @@
       site: location.hostname,
       duration: video?.duration || 0,
       subtitles: list.map(item => ({url: item.subtitle_url || item.subtitleUrl || '', label: item.lan_doc || item.label || ''})),
-      audioUrl: performance.getEntriesByType('resource').map(entry => entry.name).find(url => /\.m4s(?:\?|$)/i.test(url) && /audio|30280|30216|30232/i.test(url)) || ''
+      audioUrl: performance.getEntriesByType('resource').map(entry => entry.name).find(url => /\\.m4s(?:\\?|$)/i.test(url) && /audio|30280|30216|30232/i.test(url)) || ''
     };
   }
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
